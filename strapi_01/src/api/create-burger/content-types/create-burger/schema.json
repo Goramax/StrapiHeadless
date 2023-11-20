@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "create_burgers",
+  "info": {
+    "singularName": "create-burger",
+    "pluralName": "create-burgers",
+    "displayName": "CreateBurger"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

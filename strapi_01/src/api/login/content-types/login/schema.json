@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "logins",
+  "info": {
+    "singularName": "login",
+    "pluralName": "logins",
+    "displayName": "Login"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
