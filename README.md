@@ -1,35 +1,35 @@
 # Documentation application BurgerVerseOnline
 
-## Sommaire
+# Sommaire
 - [Documentation application BurgerVerseOnline](#documentation-application-burgerverseonline)
-  - [Sommaire](#sommaire)
-  - [Contexte et Description de l'application](#contexte-et-description-de-lapplication)
-  - [Conception](#conception)
-    - [Diagramme de Données](#diagramme-de-données)
-    - [Structure Strapi](#structure-strapi)
-    - [Structure Front-End](#structure-front-end)
-    - [Fonctionnement de l'application](#fonctionnement-de-lapplication)
-      - [**Diagramme de séquence**](#diagramme-de-séquence)
-      - [**Diagramme de cas d'utilisation**](#diagramme-de-cas-dutilisation)
-  - [Déploiement](#déploiement)
-    - [Prérequis](#prérequis)
-    - [Déploiement avec Make](#déploiement-avec-make)
-    - [Déploiement sans Make](#déploiement-sans-make)
+- [Sommaire](#sommaire)
+- [Contexte et Description de l'application](#contexte-et-description-de-lapplication)
+- [Conception](#conception)
+  - [Diagramme de Données](#diagramme-de-données)
+  - [Structure Strapi](#structure-strapi)
+  - [Structure Front-End](#structure-front-end)
+  - [Fonctionnement de l'application](#fonctionnement-de-lapplication)
+    - [Diagramme de séquence](#diagramme-de-séquence)
+    - [Diagramme de cas d'utilisation](#diagramme-de-cas-dutilisation)
+- [Déploiement](#déploiement)
+  - [Prérequis](#prérequis)
+  - [Déploiement avec Make](#déploiement-avec-make)
+  - [Déploiement sans Make](#déploiement-sans-make)
 
-## Contexte et Description de l'application
+# Contexte et Description de l'application
 
 Il s'agit d'une application web fictive pour un exposé d'anglais dans lequel nous devons présenter une entreprise fictive. Nous avons décidé d'aller un peu plus loin et faire un site vitrine pour la solution de cette entreprise.
 L'entreprise en question est BurgerVerseOnline, une chaine de restauration rapide fictive qui propose des burgers personnalisés à la commande.
 
 Lors de la création d'une commande, on choisit nos ingrédients : pain, viandes, accompagnements etc..
 
-## Conception
+# Conception
 
-### Diagramme de Données
+## Diagramme de Données
 
 ![Diagramme de données](./doc_resources/Diagramme_Classe_Strapi.drawio.png)
 
-### Structure Strapi
+## Structure Strapi
 
 <u>Collections:</u>
 -   `IngredientTypes`: Catégories d'ingrédients (pain, viande, accompagnement etc..)
@@ -60,7 +60,7 @@ Les components sont utilisés dans les singles, pour le front-end du site, afin 
 ![Schema Strapi](./doc_resources/Schema_Strapi.drawio.png)
 
 
-### Structure Front-End
+## Structure Front-End
 
 Le front-end est composé de 5 pages :
 -  `Home`: Page d'accueil du site
@@ -75,25 +75,25 @@ Le front est développé avec **Svelte**, un framework javascript.
 
 ![Diagramme de classe](./doc_resources/Diagramme_Classe_Front.drawio.png) -->
 
-### Fonctionnement de l'application
+## Fonctionnement de l'application
 
-#### **Diagramme de séquence**
+### Diagramme de séquence
 
 ![Diagramme de séquence](./doc_resources/Diagramme_Séquence.drawio.png)
 
-#### **Diagramme de cas d'utilisation**
+### Diagramme de cas d'utilisation
 
 ![Diagramme de cas d'utilisation](./doc_resources/Diagramme_Cas_Utilisation.drawio.png)
 
-## Déploiement
+# Déploiement
 
-### Prérequis
+## Prérequis
 
 - Docker
 - Docker-compose (intégré à Docker sur Windows et Mac)
 - Make (optionnel)
 
-### Déploiement avec Make
+## Déploiement avec Make
 Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
 
 - `make up` : Déploie l'application et la démarre
@@ -101,7 +101,7 @@ Ouvrir un terminal à la racine de l'application et exécuter les commandes suiv
 - `make start` : Démarre l'application
 - `make clean` : Supprime les données de l'application
 
-### Déploiement sans Make
+## Déploiement sans Make
 Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
 
 - `docker compose up -d` : Déploie l'application
