@@ -862,13 +862,13 @@ export interface ApiOrderOrder extends Schema.CollectionType {
       undefined,
       undefined,
       {
-        'uuid-format': '^#ORDR-[A-Z]{3}-\\d{3}$';
+        'uuid-format': '^ORDR-[A-Z]{3}-\\d{3}$';
       }
     > &
       Attribute.CustomField<
         'plugin::strapi-advanced-uuid.uuid',
         {
-          'uuid-format': '^#ORDR-[A-Z]{3}-\\d{3}$';
+          'uuid-format': '^ORDR-[A-Z]{3}-\\d{3}$';
         }
       >;
     createdAt: Attribute.DateTime;
