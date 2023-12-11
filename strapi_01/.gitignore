@@ -105,8 +105,8 @@ coverage
 # Strapi
 ############################
 
-.env
-license.txt
+# .env
+# license.txt
 exports
 *.cache
 dist
