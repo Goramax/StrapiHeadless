@@ -57,9 +57,6 @@ La collection `Ingredient` est liée à la collection `Order` par une relation n
 Les components sont utilisés dans les singles, pour le front-end du site, afin de créer des élements réutilisables.
 
 
-![Schema Strapi](./doc_resources/Schema_Strapi.drawio.png)
-
-
 ## Structure Front-End
 
 Le front-end est composé de 5 pages :
@@ -79,7 +76,7 @@ Le front est développé avec **Svelte**, un framework javascript.
 
 ### Diagramme de séquence
 
-![Diagramme de séquence](./doc_resources/Diagramme_Séquence.drawio.png)
+![Diagramme de séquence](./doc_resources/Diagramme_Sequence.drawio.png)
 
 ### Diagramme de cas d'utilisation
 
@@ -99,7 +96,7 @@ Ouvrir un terminal à la racine de l'application et exécuter les commandes suiv
 - `make up` : Déploie l'application et la démarre
 - `make stop` : Arrête l'application
 - `make start` : Démarre l'application
-- `make clean` : Supprime les données de l'application
+- `make remove` : Désinstalle et Supprime les données de l'application
 
 ## Déploiement sans Make
 Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
@@ -107,4 +104,4 @@ Ouvrir un terminal à la racine de l'application et exécuter les commandes suiv
 - `docker compose up -d` : Déploie l'application
 - `docker compose stop` : Arrête l'application
 - `docker compose start` : Démarre l'application
-- `docker compose down -v --rmi all` : Supprime les données de l'application
+- `docker compose down -v --rmi local` : Supprime les données de l'application
