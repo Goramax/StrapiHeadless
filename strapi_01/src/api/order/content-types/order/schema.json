@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "reference": {
-      "type": "uid"
-    },
     "price": {
       "type": "decimal"
     },
@@ -25,6 +22,18 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "ingredients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ingredient.ingredient"
+    },
+    "Reference": {
+      "type": "customField",
+      "options": {
+        "uuid-format": "^#ORDR-[A-Z]{3}-\\d{3}$"
+      },
+      "customField": "plugin::strapi-advanced-uuid.uuid"
     }
   }
 }

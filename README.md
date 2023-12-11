@@ -15,6 +15,7 @@
   - [Prérequis](#prérequis)
   - [Déploiement avec Make](#déploiement-avec-make)
   - [Déploiement sans Make](#déploiement-sans-make)
+- [Plugins Strapi utilisés](#plugins-strapi-utilisés)
 
 # Contexte et Description de l'application
 
@@ -105,3 +106,8 @@ Ouvrir un terminal à la racine de l'application et exécuter les commandes suiv
 - `docker compose stop` : Arrête l'application
 - `docker compose start` : Démarre l'application
 - `docker compose down -v --rmi local` : Supprime les données de l'application
+
+
+# Plugins Strapi utilisés
+
+- [Advanced UUID](https://market.strapi.io/plugins/strapi-advanced-uuid)
