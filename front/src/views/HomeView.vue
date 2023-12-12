@@ -1,19 +1,51 @@
 <script setup lang="ts">
 import Slider from "../components/Slider.vue";
+import IngredientsSwiper from "../components/IngredientsSwiper.vue";
 </script>
 
 <template>
+  <h1>{{ pageTitle }}</h1>
   <main>
-    <Slider :items="[
-      {
-        image: 'https://images.unsplash.com/photo-1637710133707-688643e86b63?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-      {
-        image: 'https://images.unsplash.com/photo-1702234663985-c4ebc2fd94db?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-      {
-        image: 'https://images.unsplash.com/photo-1682686578601-e7851641d52c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      },
-    ]" />
+    <Slider :items="images" />
+    <div>
+      <h2>Our Ingredients</h2>
+      <IngredientsSwiper :items="ingredients" />
+      <div class="cta">
+        <router-link to="/create" class="btn btn--primary"
+          >Create your own burger !</router-link
+        >
+      </div>
+    </div>
   </main>
 </template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      pageTitle: null,
+      images: [],
+      ingredients: [],
+    };
+  },
+  methods: {
+    async getData() {
+      const response = await fetch(
+        import.meta.env.VITE_API_URL + `/api/home?populate=*`
+      );
+      const data = await response.json();
+      this.pageTitle = data.data.attributes.title;
+      this.images = data.data.attributes.Slider.data;
+      const ingresponse = await fetch(
+        import.meta.env.VITE_API_URL + `/api/ingredients?populate=*`
+      );
+      const ingdata = await ingresponse.json();
+      this.ingredients = ingdata.data;
+      console.log(this.ingredients);
+    },
+  },
+  created() {
+    this.getData();
+  },
+};
+</script>

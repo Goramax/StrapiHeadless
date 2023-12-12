@@ -16,9 +16,14 @@
       "type": "string"
     },
     "Slider": {
-      "type": "component",
-      "repeatable": false,
-      "component": "front.slider"
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

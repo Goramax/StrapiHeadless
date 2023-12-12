@@ -687,6 +687,7 @@ export interface ApiCreateBurgerCreateBurger extends Schema.SingleType {
     singularName: 'create-burger';
     pluralName: 'create-burgers';
     displayName: 'CreateBurger';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -724,7 +725,7 @@ export interface ApiHomeHome extends Schema.SingleType {
   };
   attributes: {
     title: Attribute.String;
-    Slider: Attribute.Component<'front.slider'>;
+    Slider: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
