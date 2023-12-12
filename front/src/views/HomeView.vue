@@ -7,11 +7,11 @@ import IngredientsSwiper from "../components/IngredientsSwiper.vue";
   <h1>{{ pageTitle }}</h1>
   <main>
     <Slider :items="images" />
-    <div>
+    <div class="content-container">
       <h2>Our Ingredients</h2>
       <IngredientsSwiper :items="ingredients" />
       <div class="cta">
-        <router-link to="/create" class="btn btn--primary"
+        <router-link to="/order" class="btn btn--primary"
           >Create your own burger !</router-link
         >
       </div>
@@ -49,3 +49,32 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 6rem;
+  a {
+    text-decoration: none;
+    color: white;
+    background-color: #ebb050;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    font-weight: bold;
+    &:hover {
+      background-color: #e0a64b;
+      transform: scale(1.1);
+    }
+  }
+}
+.content-container {
+  padding: 2rem 0;
+  border-radius: 20px 20px 0 0;
+}
+</style>
