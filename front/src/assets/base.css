@@ -8,4 +8,17 @@ body{
   font-size: 16px;
   color: #333;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body #app{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer{
+  margin-top: auto;
 }

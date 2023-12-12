@@ -1,4 +1,3 @@
-<!-- Swiper.vue -->
 <template>
   <div class="swiper-container">
     <div class="swiper-wrapper">
@@ -6,11 +5,9 @@
         <img :src="item.image" alt="Slide" />
       </div>
     </div>
-    <!-- Ajoutez d'autres éléments SwiperJS ici si nécessaire -->
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
-    <div class="swiper-scrollbar"></div>
   </div>
 </template>
 
@@ -31,9 +28,7 @@ export default {
     const swiperInstance = ref<Swiper | null>(null);
 
     onMounted(() => {
-      // Initialiser SwiperJS lorsque le composant est monté
       swiperInstance.value = new Swiper(".swiper-container", {
-        // Configurations SwiperJS ici
         slidesPerView: 1,
         spaceBetween: 10,
         pagination: {
@@ -51,7 +46,6 @@ export default {
     });
 
     onUnmounted(() => {
-      // Détruire SwiperJS lorsque le composant est démonté
       if (swiperInstance.value) {
         swiperInstance.value.destroy();
       }
@@ -63,7 +57,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-/* Ajoutez vos styles CSS ici si nécessaire */
 .swiper-container {
   width: 100%;
   height: 100%;
@@ -77,6 +70,4 @@ export default {
         object-fit: cover;
     }
 }
-
-/* Ajoutez d'autres styles SwiperJS ici si nécessaire */
 </style>
