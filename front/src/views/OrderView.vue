@@ -4,8 +4,7 @@
     <div class="content-container">
       <form class="order-form">
         <section class="bun">
-          <h2>Choose your buns</h2>
-          <!-- show a radio for each types_with_ingredients.Bread -->
+          <h2>Choose your bun</h2>
           <div class="grid">
             <div
               class="buns-radio img-radio"
@@ -24,6 +23,155 @@
                 <img
                   :src="baseUrl + bun.attributes.image.data.attributes.url"
                   :alt="bun.attributes.name"
+                />
+              </label>
+            </div>
+          </div>
+        </section>
+        <section class="ingredients">
+          <h2>Choose your ingredients</h2>
+          <h3>Meat</h3>
+          <div class="grid">
+            <div
+              class="meat-radio img-radio"
+              v-for="(meat, i) in types_with_ingredients.Meats"
+              :key="meat.id"
+            >
+              <input
+                type="radio"
+                :id="meat.id"
+                :value="meat.id"
+                name="meat"
+                v-model="meat[i]"
+              />
+              <label :for="meat.id"
+                >{{ meat.attributes.name }}
+                <img
+                  :src="baseUrl + meat.attributes.image.data.attributes.url"
+                  :alt="meat.attributes.name"
+                />
+              </label>
+            </div>
+          </div>
+          <h3>Sauces</h3>
+          <div class="grid">
+            <div
+              class="sauce-radio img-radio"
+              v-for="(sauce, i) in types_with_ingredients.Sauces"
+              :key="sauce.id"
+            >
+              <input
+                type="checkbox"
+                :id="sauce.id"
+                :value="sauce.id"
+                name="sauce"
+                v-model="sauce[i]"
+              />
+              <label :for="sauce.id"
+                >{{ sauce.attributes.name }}
+                <img
+                  :src="baseUrl + sauce.attributes.image.data.attributes.url"
+                  :alt="sauce.attributes.name"
+                />
+              </label>
+            </div>
+          </div>
+          <h3>Extras</h3>
+          <div class="grid">
+            <div
+              class="extra-radio img-radio"
+              v-for="(extra, i) in types_with_ingredients.Extras"
+              :key="extra.id"
+            >
+              <input
+                type="checkbox"
+                :id="extra.id"
+                :value="extra.id"
+                name="extra"
+                v-model="extra[i]"
+              />
+              <label :for="extra.id"
+                >{{ extra.attributes.name }}
+                <img
+                  :src="baseUrl + extra.attributes.image.data.attributes.url"
+                  :alt="extra.attributes.name"
+                />
+              </label>
+            </div>
+          </div>
+        </section>
+        <h2>Side Dishes</h2>
+        <section class="side-dishes">
+          <div class="grid">
+            <div
+              class="side-dish-radio img-radio"
+              v-for="(side_dish, i) in types_with_ingredients.Sidedishes"
+              :key="side_dish.id"
+            >
+              <input
+                type="radio"
+                :id="side_dish.id"
+                :value="side_dish.id"
+                name="side_dish"
+                v-model="side_dish[i]"
+              />
+              <label :for="side_dish.id"
+                >{{ side_dish.attributes.name }}
+                <img
+                  :src="
+                    baseUrl + side_dish.attributes.image.data.attributes.url
+                  "
+                  :alt="side_dish.attributes.name"
+                />
+              </label>
+            </div>
+          </div>
+        </section>
+        <section class="drink">
+          <h2>Drinks</h2>
+          <div class="grid">
+            <div
+              class="drink-radio img-radio"
+              v-for="(drink, i) in types_with_ingredients.Drinks"
+              :key="drink.id"
+            >
+              <input
+                type="radio"
+                :id="drink.id"
+                :value="drink.id"
+                name="drink"
+                v-model="drink[i]"
+              />
+              <label :for="drink.id"
+                >{{ drink.attributes.name }}
+                <img
+                  :src="baseUrl + drink.attributes.image.data.attributes.url"
+                  :alt="drink.attributes.name"
+                />
+              </label>
+            </div>
+          </div>
+        </section>
+        <section class="dessert">
+          <h2>Desserts</h2>
+          <div class="grid">
+            <div
+              class="dessert-radio img-radio"
+              v-for="(dessert, i) in types_with_ingredients.Desserts"
+              :key="dessert.id"
+            >
+              <input
+                type="radio"
+                :id="dessert.id"
+                :value="dessert.id"
+                name="dessert"
+                v-model="dessert[i]"
+              />
+              <label :for="dessert.id"
+                >{{ dessert.attributes.name }}
+                <img
+                  :src="baseUrl + dessert.attributes.image.data.attributes.url"
+                  :alt="dessert.attributes.name"
                 />
               </label>
             </div>
@@ -63,7 +211,7 @@ export default {
       const ingredient_types = ingtypesdata.data;
       const types_with_ingredients = [];
       ingredient_types.forEach((type) => {
-        const type_name = type.attributes.name;
+        const type_name = type.attributes.name.replace(/\s/g, "");
         const type_id = type.id;
         const type_ingredients = [];
         ingredients.forEach((ingredient) => {
@@ -90,19 +238,26 @@ export default {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
-.img-radio{
+.img-radio {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  input{
+  user-select: none;
+  input {
     display: none;
   }
-  img{
+  img {
     width: 100px;
     height: 100px;
     object-fit: contain;
@@ -111,24 +266,23 @@ export default {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     background-color: #fff;
   }
-  input:checked + img{
+  input:checked + label img {
     background-color: $color-primary;
   }
-  label{
+  label {
     display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem 1rem;
-        border-radius: 10px;
-        font-size: 1.2rem;
-        gap: 0.5rem;
-        width: 100%;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-weight: bold;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    gap: 0.5rem;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
   }
-
 }
 </style>
