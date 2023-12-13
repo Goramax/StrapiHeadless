@@ -9,9 +9,6 @@
         <span class="tooltiptext">{{ item.attributes.name }}</span>
       </div>
     </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
   </div>
 </template>
 
@@ -22,7 +19,7 @@ import { Autoplay } from 'swiper/modules';
 import "swiper/css";
 
 export default {
-  name: "SwiperComponent",
+  name: "SwiperIngredientsComponent",
   props: {
     items: {
       type: [Array, Object],
@@ -88,7 +85,6 @@ export default {
 }
 
 .swiper-ingredients{
-  overflow-x: hidden;
   padding: 2px 0;
 }
 

@@ -9,17 +9,29 @@
           />
         </div>
       </div>
+      <div class="swiper-button-next">
+        <Chevron />
+      </div>
+      <div class="swiper-button-prev">
+        <Chevron />
+      </div>
+      <div class="swiper-pagination"></div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import Chevron from "@/components/icons/Chevron.vue";
 import { ref, onMounted, onUnmounted } from "vue";
 import Swiper from "swiper";
+import { Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 
 export default {
-  name: "SwiperComponent",
+  name: "SliderComponent",
+  components: {
+    Chevron,
+  },
   props: {
     items: {
       type: [Array, Object],
@@ -31,7 +43,16 @@ export default {
 
     onMounted(() => {
       swiperInstance.value = new Swiper(".swiper", {
+        modules: [Pagination, Navigation],
         slidesPerView: 1,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
       });
     });
 
@@ -52,7 +73,7 @@ export default {
 .slider-container {
   @media (max-width: 1024px) {
     width: 100%;
-    height: 'auto';
+    height: "auto";
   }
   @media ((min-width: 1024px) and (max-width: 1440px)) {
     width: 1024px;
@@ -66,19 +87,26 @@ export default {
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-}
 
-.swiper-container {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  height: 100%;
-  img {
-    width: 100%;
+  .swiper-slide {
     height: 100%;
-    object-fit: cover;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.swiper-wrapper .swiper-slide {
+  @media (max-width: 1024px) {
+    height: "auto";
+  }
+  @media ((min-width: 1024px) and (max-width: 1440px)) {
+    height: 512px;
+  }
+  @media (min-width: 1440px) {
+    height: 720px;
   }
 }
 </style>

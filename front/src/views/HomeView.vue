@@ -4,8 +4,8 @@ import IngredientsSwiper from "../components/IngredientsSwiper.vue";
 </script>
 
 <template>
-  <h1>{{ pageTitle }}</h1>
   <main>
+    <h1>{{ pageTitle }}</h1>
     <Slider :items="images" />
     <div class="content-container">
       <h2>Our Ingredients</h2>
@@ -58,18 +58,18 @@ h2 {
 .cta {
   display: flex;
   justify-content: center;
-  margin-top: 6rem;
+  margin: 6rem 0;
   a {
     text-decoration: none;
     color: white;
-    background-color: #ebb050;
+    background-color: $color-primary;
     padding: 1rem 2rem;
     border-radius: 5px;
     transition: all 0.2s ease-in-out;
     font-weight: bold;
     &:hover {
-      background-color: #e0a64b;
-      transform: scale(1.1);
+      background-color: $color-primary-dark;
+      transform: scale(1.1) rotate(-2deg);
     }
   }
 }

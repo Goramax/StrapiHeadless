@@ -11,10 +11,13 @@
   - [Fonctionnement de l'application](#fonctionnement-de-lapplication)
     - [Diagramme de séquence](#diagramme-de-séquence)
     - [Diagramme de cas d'utilisation](#diagramme-de-cas-dutilisation)
-- [Déploiement](#déploiement)
+- [Déploiement avec Docker](#déploiement-avec-docker)
   - [Prérequis](#prérequis)
   - [Déploiement avec Make](#déploiement-avec-make)
   - [Déploiement sans Make](#déploiement-sans-make)
+- [Déploiement sans Docker](#déploiement-sans-docker)
+  - [Prérequis](#prérequis-1)
+  - [Déploiement](#déploiement)
 - [Plugins Strapi utilisés](#plugins-strapi-utilisés)
 
 # Contexte et Description de l'application
@@ -83,7 +86,7 @@ Le front est développé avec **Svelte**, un framework javascript.
 
 ![Diagramme de cas d'utilisation](./doc_resources/Diagramme_Cas_Utilisation.drawio.png)
 
-# Déploiement
+# Déploiement avec Docker
 
 ## Prérequis
 
@@ -106,6 +109,21 @@ Ouvrir un terminal à la racine de l'application et exécuter les commandes suiv
 - `docker compose stop` : Arrête l'application
 - `docker compose start` : Démarre l'application
 - `docker compose down -v --rmi local` : Supprime les données de l'application
+
+# Déploiement sans Docker
+
+## Prérequis
+
+- NodeJS avec npm ou yarn
+
+## Déploiement
+
+Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
+
+- `cd strapi_01` : Se placer dans le dossier strapi_01
+- `npm install` : Installer les dépendances
+- `npm run build` : Compiler l'application
+
 
 
 # Plugins Strapi utilisés
