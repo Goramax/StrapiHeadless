@@ -2,182 +2,205 @@
   <main>
     <h1>{{ pageTitle }}</h1>
     <div class="content-container">
-      <form class="order-form">
-        <section class="bun">
-          <h2>Choose your bun</h2>
-          <div class="grid">
-            <div
-              class="buns-radio img-radio"
-              v-for="(bun, i) in types_with_ingredients.Breads"
-              :key="bun.id"
-            >
-              <input
-                type="radio"
-                :id="bun.id"
-                :value="bun.id"
-                name="bun"
-                v-model="bun[i]"
-              />
-              <label :for="bun.id"
-                >{{ bun.attributes.name }}
-                <img
-                  :src="baseUrl + bun.attributes.image.data.attributes.url"
-                  :alt="bun.attributes.name"
+      <div class="container-padding">
+        <form class="order-form">
+          <section class="bun">
+            <h2>Choose your bun</h2>
+            <div class="grid">
+              <div
+                class="buns-radio img-radio"
+                v-for="(bun, i) in types_with_ingredients.Breads"
+                :key="bun.id"
+              >
+                <input
+                  type="radio"
+                  :id="bun.id"
+                  :value="bun.id"
+                  name="bun"
+                  v-model="bun[i]"
                 />
-              </label>
+                <label :for="bun.id"
+                  >{{ bun.attributes.name }} (${{ bun.attributes.price }})
+                  <img
+                    :src="baseUrl + bun.attributes.image.data.attributes.url"
+                    :alt="bun.attributes.name"
+                  />
+                </label>
+              </div>
             </div>
-          </div>
-        </section>
-        <section class="ingredients">
-          <h2>Choose your ingredients</h2>
-          <h3>Meat</h3>
-          <div class="grid">
-            <div
-              class="meat-radio img-radio"
-              v-for="(meat, i) in types_with_ingredients.Meats"
-              :key="meat.id"
-            >
-              <input
-                type="radio"
-                :id="meat.id"
-                :value="meat.id"
-                name="meat"
-                v-model="meat[i]"
-              />
-              <label :for="meat.id"
-                >{{ meat.attributes.name }}
-                <img
-                  :src="baseUrl + meat.attributes.image.data.attributes.url"
-                  :alt="meat.attributes.name"
+          </section>
+          <section class="ingredients">
+            <h2>Choose your ingredients</h2>
+            <h3>Meat</h3>
+            <div class="grid">
+              <div
+                class="meat-radio img-radio"
+                v-for="(meat, i) in types_with_ingredients.Meats"
+                :key="meat.id"
+              >
+                <input
+                  type="radio"
+                  :id="meat.id"
+                  :value="meat.id"
+                  name="meat"
+                  v-model="meat[i]"
                 />
-              </label>
+                <label :for="meat.id"
+                  >{{ meat.attributes.name }} (${{ meat.attributes.price }})
+                  <img
+                    :src="baseUrl + meat.attributes.image.data.attributes.url"
+                    :alt="meat.attributes.name"
+                  />
+                </label>
+              </div>
             </div>
-          </div>
-          <h3>Sauces</h3>
-          <div class="grid">
-            <div
-              class="sauce-radio img-radio"
-              v-for="(sauce, i) in types_with_ingredients.Sauces"
-              :key="sauce.id"
-            >
-              <input
-                type="checkbox"
-                :id="sauce.id"
-                :value="sauce.id"
-                name="sauce"
-                v-model="sauce[i]"
-              />
-              <label :for="sauce.id"
-                >{{ sauce.attributes.name }}
-                <img
-                  :src="baseUrl + sauce.attributes.image.data.attributes.url"
-                  :alt="sauce.attributes.name"
+            <h3>Sauces</h3>
+            <div class="grid">
+              <div
+                class="sauce-radio img-radio"
+                v-for="(sauce, i) in types_with_ingredients.Sauces"
+                :key="sauce.id"
+              >
+                <input
+                  type="checkbox"
+                  :id="sauce.id"
+                  :value="sauce.id"
+                  name="sauce"
+                  v-model="sauce[i]"
                 />
-              </label>
+                <label :for="sauce.id"
+                  >{{ sauce.attributes.name }} (${{ sauce.attributes.price }})
+                  <img
+                    :src="baseUrl + sauce.attributes.image.data.attributes.url"
+                    :alt="sauce.attributes.name"
+                  />
+                </label>
+              </div>
             </div>
-          </div>
-          <h3>Extras</h3>
-          <div class="grid">
-            <div
-              class="extra-radio img-radio"
-              v-for="(extra, i) in types_with_ingredients.Extras"
-              :key="extra.id"
-            >
-              <input
-                type="checkbox"
-                :id="extra.id"
-                :value="extra.id"
-                name="extra"
-                v-model="extra[i]"
-              />
-              <label :for="extra.id"
-                >{{ extra.attributes.name }}
-                <img
-                  :src="baseUrl + extra.attributes.image.data.attributes.url"
-                  :alt="extra.attributes.name"
+            <h3>Extras</h3>
+            <div class="grid">
+              <div
+                class="extra-radio img-radio"
+                v-for="(extra, i) in types_with_ingredients.Extras"
+                :key="extra.id"
+              >
+                <input
+                  type="checkbox"
+                  :id="extra.id"
+                  :value="extra.id"
+                  name="extra"
+                  v-model="extra[i]"
                 />
-              </label>
+                <label :for="extra.id"
+                  >{{ extra.attributes.name }} (${{ extra.attributes.price }})
+                  <img
+                    :src="baseUrl + extra.attributes.image.data.attributes.url"
+                    :alt="extra.attributes.name"
+                  />
+                </label>
+              </div>
             </div>
-          </div>
-        </section>
-        <h2>Side Dishes</h2>
-        <section class="side-dishes">
-          <div class="grid">
-            <div
-              class="side-dish-radio img-radio"
-              v-for="(side_dish, i) in types_with_ingredients.Sidedishes"
-              :key="side_dish.id"
-            >
-              <input
-                type="radio"
-                :id="side_dish.id"
-                :value="side_dish.id"
-                name="side_dish"
-                v-model="side_dish[i]"
-              />
-              <label :for="side_dish.id"
-                >{{ side_dish.attributes.name }}
-                <img
-                  :src="
-                    baseUrl + side_dish.attributes.image.data.attributes.url
-                  "
-                  :alt="side_dish.attributes.name"
+          </section>
+          <h2>Side Dishes</h2>
+          <section class="side-dishes">
+            <div class="grid">
+              <div
+                class="side-dish-radio img-radio"
+                v-for="(side_dish, i) in types_with_ingredients.Sidedishes"
+                :key="side_dish.id"
+              >
+                <input
+                  type="radio"
+                  :id="side_dish.id"
+                  :value="side_dish.id"
+                  name="side_dish"
+                  v-model="side_dish[i]"
                 />
-              </label>
+                <label :for="side_dish.id"
+                  >{{ side_dish.attributes.name }} (${{
+                    side_dish.attributes.price
+                  }})
+                  <img
+                    :src="
+                      baseUrl + side_dish.attributes.image.data.attributes.url
+                    "
+                    :alt="side_dish.attributes.name"
+                  />
+                </label>
+              </div>
             </div>
-          </div>
-        </section>
-        <section class="drink">
-          <h2>Drinks</h2>
-          <div class="grid">
-            <div
-              class="drink-radio img-radio"
-              v-for="(drink, i) in types_with_ingredients.Drinks"
-              :key="drink.id"
-            >
-              <input
-                type="radio"
-                :id="drink.id"
-                :value="drink.id"
-                name="drink"
-                v-model="drink[i]"
-              />
-              <label :for="drink.id"
-                >{{ drink.attributes.name }}
-                <img
-                  :src="baseUrl + drink.attributes.image.data.attributes.url"
-                  :alt="drink.attributes.name"
+          </section>
+          <section class="drink">
+            <h2>Drinks</h2>
+            <div class="grid">
+              <div
+                class="drink-radio img-radio"
+                v-for="(drink, i) in types_with_ingredients.Drinks"
+                :key="drink.id"
+              >
+                <input
+                  type="radio"
+                  :id="drink.id"
+                  :value="drink.id"
+                  name="drink"
+                  v-model="drink[i]"
                 />
-              </label>
+                <label :for="drink.id"
+                  >{{ drink.attributes.name }} (${{ drink.attributes.price }})
+                  <img
+                    :src="baseUrl + drink.attributes.image.data.attributes.url"
+                    :alt="drink.attributes.name"
+                  />
+                </label>
+              </div>
             </div>
-          </div>
-        </section>
-        <section class="dessert">
-          <h2>Desserts</h2>
-          <div class="grid">
-            <div
-              class="dessert-radio img-radio"
-              v-for="(dessert, i) in types_with_ingredients.Desserts"
-              :key="dessert.id"
-            >
-              <input
-                type="radio"
-                :id="dessert.id"
-                :value="dessert.id"
-                name="dessert"
-                v-model="dessert[i]"
-              />
-              <label :for="dessert.id"
-                >{{ dessert.attributes.name }}
-                <img
-                  :src="baseUrl + dessert.attributes.image.data.attributes.url"
-                  :alt="dessert.attributes.name"
+          </section>
+          <section class="dessert">
+            <h2>Desserts</h2>
+            <div class="grid">
+              <div
+                class="dessert-radio img-radio"
+                v-for="(dessert, i) in types_with_ingredients.Desserts"
+                :key="dessert.id"
+              >
+                <input
+                  type="radio"
+                  :id="dessert.id"
+                  :value="dessert.id"
+                  name="dessert"
+                  v-model="dessert[i]"
                 />
-              </label>
+                <label :for="dessert.id"
+                  >{{ dessert.attributes.name }} (${{
+                    dessert.attributes.price
+                  }})
+                  <img
+                    :src="
+                      baseUrl + dessert.attributes.image.data.attributes.url
+                    "
+                    :alt="dessert.attributes.name"
+                  />
+                </label>
+              </div>
             </div>
-          </div>
-        </section>
-      </form>
+          </section>
+          <section class="subtotal" v-if="types_with_ingredients">
+            <h2>Subtotal</h2>
+            <div class="grid">
+              <div class="subtotal-radio">
+                <p>Subtotal: ${{ subtotal }}</p>
+              </div>
+            </div>
+          </section>
+          <section class="submit">
+            <div class="grid">
+              <div class="submit-radio">
+                <button type="submit">Order !</button>
+              </div>
+            </div>
+          </section>
+        </form>
+      </div>
     </div>
   </main>
 </template>
@@ -189,6 +212,7 @@ export default {
       pageTitle: null,
       types_with_ingredients: [],
       baseUrl: import.meta.env.VITE_API_URL,
+      subtotal: 0,
     };
   },
   methods: {
@@ -234,7 +258,18 @@ export default {
 <style scoped lang="scss">
 .content-container {
   border-radius: 20px 20px 0 0;
-  padding: 2rem;
+  .container-padding {
+    padding: 2rem;
+  }
+}
+h3 {
+  text-decoration: underline;
+}
+h2 {
+  padding: 1rem 2rem;
+  background-color: $color-light-grey;
+  border-radius: 20px;
+  text-align: center;
 }
 .grid {
   display: grid;
@@ -268,6 +303,11 @@ export default {
   }
   input:checked + label img {
     background-color: $color-primary;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+  }
+  input + label img{
+    transition: all 0.3s cubic-bezier(.75,-0.5,0,1.75);
   }
   label {
     display: flex;

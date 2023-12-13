@@ -40,7 +40,9 @@ export default {
         import.meta.env.VITE_API_URL + `/api/ingredients?populate=*`
       );
       const ingdata = await ingresponse.json();
-      this.ingredients = ingdata.data;
+      this.ingredients = ingdata.data.filter(
+        (item) => item.attributes.name !== "None"
+      );
       console.log(this.ingredients);
     },
   },
