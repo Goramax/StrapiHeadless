@@ -18,6 +18,8 @@
                   :value="bun.id"
                   name="bun"
                   v-model="bun[i]"
+                  data-type="Breads"
+                  @change="updateSubtotal"
                 />
                 <label :for="bun.id"
                   >{{ bun.attributes.name }} (${{ bun.attributes.price }})
@@ -44,6 +46,8 @@
                   :value="meat.id"
                   name="meat"
                   v-model="meat[i]"
+                  data-type="Meats"
+                  @change="updateSubtotal"
                 />
                 <label :for="meat.id"
                   >{{ meat.attributes.name }} (${{ meat.attributes.price }})
@@ -67,6 +71,8 @@
                   :value="sauce.id"
                   name="sauce"
                   v-model="sauce[i]"
+                  data-type="Sauces"
+                  @change="updateSubtotal"
                 />
                 <label :for="sauce.id"
                   >{{ sauce.attributes.name }} (${{ sauce.attributes.price }})
@@ -90,6 +96,8 @@
                   :value="extra.id"
                   name="extra"
                   v-model="extra[i]"
+                  data-type="Extras"
+                  @change="updateSubtotal"
                 />
                 <label :for="extra.id"
                   >{{ extra.attributes.name }} (${{ extra.attributes.price }})
@@ -115,6 +123,8 @@
                   :value="side_dish.id"
                   name="side_dish"
                   v-model="side_dish[i]"
+                  data-type="Sidedishes"
+                  @change="updateSubtotal"
                 />
                 <label :for="side_dish.id"
                   >{{ side_dish.attributes.name }} (${{
@@ -144,6 +154,8 @@
                   :value="drink.id"
                   name="drink"
                   v-model="drink[i]"
+                  data-type="Drinks"
+                  @change="updateSubtotal"
                 />
                 <label :for="drink.id"
                   >{{ drink.attributes.name }} (${{ drink.attributes.price }})
@@ -169,6 +181,8 @@
                   :value="dessert.id"
                   name="dessert"
                   v-model="dessert[i]"
+                  data-type="Desserts"
+                  @change="updateSubtotal"
                 />
                 <label :for="dessert.id"
                   >{{ dessert.attributes.name }} (${{
@@ -246,7 +260,26 @@ export default {
         types_with_ingredients[type_name] = type_ingredients;
       });
       this.types_with_ingredients = types_with_ingredients;
-      console.log(this.types_with_ingredients);
+    },
+    // async uploadForm(){
+
+    // }
+    updateSubtotal() {
+      let subtotal = 0;
+      // get all checked ingredients in form
+      const checked_ingredients = document.querySelectorAll(
+        "input[type=radio]:checked"
+      );
+      // from the array types_with_ingredients, get the ingredient object that matches the checked ingredient id and add its price to the subtotal
+      checked_ingredients.forEach((checked_ingredient) => {
+        const ingredient_id = checked_ingredient.value;
+        const ingredient_type = checked_ingredient.dataset.type;
+        const ingredient = this.types_with_ingredients![ingredient_type].find(
+          (ingredient) => ingredient.id === parseInt(ingredient_id)
+        );
+        subtotal += ingredient.attributes.price;
+      });
+      this.subtotal = subtotal;
     },
   },
   created() {
@@ -306,8 +339,8 @@ h2 {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
   }
-  input + label img{
-    transition: all 0.3s cubic-bezier(.75,-0.5,0,1.75);
+  input + label img {
+    transition: all 0.3s cubic-bezier(0.75, -0.5, 0, 1.75);
   }
   label {
     display: flex;
