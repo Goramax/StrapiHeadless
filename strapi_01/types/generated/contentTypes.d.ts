@@ -849,7 +849,7 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   attributes: {
     price: Attribute.Decimal;
     date: Attribute.DateTime;
-    users_permissions_user: Attribute.Relation<
+    linked_user: Attribute.Relation<
       'api::order.order',
       'oneToOne',
       'plugin::users-permissions.user'

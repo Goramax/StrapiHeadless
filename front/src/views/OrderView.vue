@@ -3,7 +3,7 @@
     <h1>{{ pageTitle }}</h1>
     <div class="content-container">
       <div class="container-padding">
-        <form class="order-form">
+        <form class="order-form" @submit.prevent="uploadForm">
           <section class="bun">
             <h2>Choose your bun</h2>
             <div class="grid">
@@ -200,17 +200,13 @@
           </section>
           <section class="subtotal" v-if="types_with_ingredients">
             <h2>Subtotal</h2>
-            <div class="grid">
-              <div class="subtotal-radio">
-                <p>Subtotal: ${{ subtotal }}</p>
-              </div>
+            <div class="subtotal-radio">
+              <p>Subtotal: ${{ subtotal }}</p>
             </div>
           </section>
           <section class="submit">
-            <div class="grid">
-              <div class="submit-radio">
-                <button type="submit">Order !</button>
-              </div>
+            <div class="submit-radio">
+              <button type="submit">Order !</button>
             </div>
           </section>
         </form>
@@ -227,6 +223,7 @@ export default {
       types_with_ingredients: [],
       baseUrl: import.meta.env.VITE_API_URL,
       subtotal: 0,
+      selected_ingredients: [],
     };
   },
   methods: {
@@ -261,14 +258,39 @@ export default {
       });
       this.types_with_ingredients = types_with_ingredients;
     },
-    // async uploadForm(){
-
-    // }
+    async uploadForm() {
+      const response = await fetch(
+        import.meta.env.VITE_API_URL + `/api/orders`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            data: {
+              price: this.subtotal,
+              ingredients: this.selected_ingredients,
+              linkedUser: 1, // No auth, so default user
+              date: new Date(),
+            },
+          }),
+        }
+      );
+      const data = await response.json();
+      if (data.data) {
+        this.$router.push({
+          name: "order-confirm",
+          params: { id: data.data.id },
+        });
+      } else {
+        alert("Error, please try again");
+      }
+    },
     updateSubtotal() {
       let subtotal = 0;
       // get all checked ingredients in form
       const checked_ingredients = document.querySelectorAll(
-        "input[type=radio]:checked"
+        "input[type=radio]:checked, input[type=checkbox]:checked"
       );
       // from the array types_with_ingredients, get the ingredient object that matches the checked ingredient id and add its price to the subtotal
       checked_ingredients.forEach((checked_ingredient) => {
@@ -280,6 +302,10 @@ export default {
         subtotal += ingredient.attributes.price;
       });
       this.subtotal = subtotal;
+      this.selected_ingredients = [];
+      for (let i = 0; i < checked_ingredients.length; i++) {
+        this.selected_ingredients.push(checked_ingredients[i].value);
+      }
     },
   },
   created() {
@@ -358,4 +384,31 @@ h2 {
     font-weight: bold;
   }
 }
+.submit-radio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    padding: 1rem 2rem;
+    display: inline-block;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    background-color: $color-primary;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    min-width: 20%;
+    border: none;
+    &:hover {
+      background-color: $color-primary-dark;
+      transform: scale(1.1) rotate(-2deg);
+    }
+  }
+}
+.subtotal-radio p {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+@import "../assets/scss/global.scss";
 </style>

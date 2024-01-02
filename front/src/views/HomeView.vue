@@ -57,26 +57,9 @@ h2 {
   text-align: center;
   margin-bottom: 2rem;
 }
-.cta {
-  display: flex;
-  justify-content: center;
-  margin: 6rem 0;
-  a {
-    text-decoration: none;
-    color: white;
-    background-color: $color-primary;
-    padding: 1rem 2rem;
-    border-radius: 5px;
-    transition: all 0.2s ease-in-out;
-    font-weight: bold;
-    &:hover {
-      background-color: $color-primary-dark;
-      transform: scale(1.1) rotate(-2deg);
-    }
-  }
-}
 .content-container {
   padding: 2rem 0;
   border-radius: 20px 20px 0 0;
 }
+@import "../assets/scss/global.scss";
 </style>
