@@ -18,8 +18,10 @@
 - [Déploiement sans Docker](#déploiement-sans-docker)
   - [Prérequis](#prérequis-1)
   - [Déploiement](#déploiement)
+    - [Récupérer le projet](#récupérer-le-projet)
     - [Strapi](#strapi)
     - [Front](#front)
+- [Pages disponibles](#pages-disponibles)
 - [Plugins Strapi utilisés](#plugins-strapi-utilisés)
 
 # Contexte et Description de l'application
@@ -114,11 +116,18 @@ Le front est développé avec **Svelte**, un framework javascript.
 
 # Déploiement sans Docker
 
+__Note :__ <u>Exceptionnellement</u>, la bdd de Strapi et les fichiers d'environnement sont commités pour faciliter le déploiement.
+
 ## Prérequis
 
 - NodeJS avec npm ou yarn
 
 ## Déploiement
+
+### Récupérer le projet
+
+Ouvrir un terminal et exécuter la commande suivante :
+`git clone https://github.com/Goramax/StrapiHeadless.git`
 
 ### Strapi
 
@@ -146,6 +155,13 @@ Ouvrir un terminal à la racine de l'application et exécuter les commandes suiv
 Pour exécuter l'application en mode développement, exécuter la commande `npm run dev` à la place de `npm run build`.
 
 - Ouvrir un navigateur et aller sur l'adresse `http://localhost:5173` pour accéder au site
+
+# Pages disponibles
+
+- `/` : **Page d'accueil** (Affichage)
+- `/order` : **Page pour créer une commande** (Affichage / Création)
+- `/order-confirm` : **Page de confirmation de commande** (Affichage)
+- `/admin` : **Page d'affichage des commandes** (Modification / Suppression)
 
 # Plugins Strapi utilisés
 
