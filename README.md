@@ -131,7 +131,7 @@ Ouvrir un terminal et exécuter la commande suivante :
 
 ### Strapi
 
-Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
+Ouvrir un terminal à la racine du projet et exécuter les commandes suivantes :
 
 - `cd strapi_01` : Se placer dans le dossier strapi_01
 - `npm install` : Installer les dépendances
@@ -145,12 +145,12 @@ Mot de passe : `Root1234`
 
 ### Front
 
-Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
+Ouvrir un terminal à la racine du projet et exécuter les commandes suivantes :
 
 - `cd front` : Se placer dans le dossier front
 - `npm install` : Installer les dépendances
 - `npm run build` : Compiler l'application
-- Déployez ensuitee le dossier `public` généré par la commande précédente sur un serveur web (Apache, Nginx etc..)
+- Déployez ensuite le dossier `dist` généré par la commande précédente sur un serveur web (Apache, Nginx etc..)
 
 Pour exécuter l'application en mode développement, exécuter la commande `npm run dev` à la place de `npm run build`.
 

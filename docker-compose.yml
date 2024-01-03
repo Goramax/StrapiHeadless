@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  strapi:
+    image: goramax/strapi:latest
+    build: ./strapi_01
+    container_name: burgerverse_strapi
+    restart: unless-stopped
+    ports:
+      - 1337:1337
+
+  front:
+    image: goramax/front:latest
+    build: ./front
+    container_name: burgerverse_front
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    depends_on:
+      - strapi
