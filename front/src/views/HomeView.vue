@@ -41,7 +41,7 @@ export default {
       );
       const ingdata = await ingresponse.json();
       this.ingredients = ingdata.data.filter(
-        (item) => item.attributes.name !== "None"
+        (item : any) => item.attributes.name !== "None"
       );
       console.log(this.ingredients);
     },

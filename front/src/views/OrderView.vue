@@ -220,7 +220,7 @@ export default {
   data() {
     return {
       pageTitle: null,
-      types_with_ingredients: [],
+      types_with_ingredients: {} as Record<string, any[]>,
       baseUrl: import.meta.env.VITE_API_URL,
       subtotal: 0,
       selected_ingredients: [],
@@ -244,12 +244,12 @@ export default {
       );
       const ingtypesdata = await ingtypesresponse.json();
       const ingredient_types = ingtypesdata.data;
-      const types_with_ingredients = [];
-      ingredient_types.forEach((type) => {
+      const types_with_ingredients = [] as any;
+      ingredient_types.forEach((type: any) => {
         const type_name = type.attributes.name.replace(/\s/g, "");
         const type_id = type.id;
-        const type_ingredients = [];
-        ingredients.forEach((ingredient) => {
+        const type_ingredients = [] as any;
+        ingredients.forEach((ingredient: any) => {
           if (ingredient.attributes.ingredient_type.data.id === type_id) {
             type_ingredients.push(ingredient);
           }
@@ -269,7 +269,7 @@ export default {
           body: JSON.stringify({
             data: {
               price: this.subtotal,
-              ingredients: this.selected_ingredients,
+              ingredients: this.selected_ingredients || [],
               linkedUser: 1, // No auth, so default user
               date: new Date(),
             },
@@ -289,23 +289,24 @@ export default {
     updateSubtotal() {
       let subtotal = 0;
       // get all checked ingredients in form
-      const checked_ingredients = document.querySelectorAll(
+      const checked_ingredients = document.querySelectorAll<HTMLInputElement>(
         "input[type=radio]:checked, input[type=checkbox]:checked"
       );
       // from the array types_with_ingredients, get the ingredient object that matches the checked ingredient id and add its price to the subtotal
       checked_ingredients.forEach((checked_ingredient) => {
         const ingredient_id = checked_ingredient.value;
-        const ingredient_type = checked_ingredient.dataset.type;
+        const ingredient_type = checked_ingredient.dataset.type || "";
         const ingredient = this.types_with_ingredients![ingredient_type].find(
-          (ingredient) => ingredient.id === parseInt(ingredient_id)
+          (ingredient : any) => ingredient.id === parseInt(ingredient_id)
         );
-        subtotal += ingredient.attributes.price;
+        if (ingredient) {
+          subtotal += ingredient.attributes.price;
+        }
       });
       this.subtotal = subtotal;
-      this.selected_ingredients = [];
-      for (let i = 0; i < checked_ingredients.length; i++) {
-        this.selected_ingredients.push(checked_ingredients[i].value);
-      }
+      this.selected_ingredients = Array.from(checked_ingredients).map(
+        (element) => element.value
+      ) as any;
     },
   },
   created() {

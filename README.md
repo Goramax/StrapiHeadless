@@ -18,6 +18,8 @@
 - [Déploiement sans Docker](#déploiement-sans-docker)
   - [Prérequis](#prérequis-1)
   - [Déploiement](#déploiement)
+    - [Strapi](#strapi)
+    - [Front](#front)
 - [Plugins Strapi utilisés](#plugins-strapi-utilisés)
 
 # Contexte et Description de l'application
@@ -118,13 +120,32 @@ Ouvrir un terminal à la racine de l'application et exécuter les commandes suiv
 
 ## Déploiement
 
+### Strapi
+
 Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
 
 - `cd strapi_01` : Se placer dans le dossier strapi_01
 - `npm install` : Installer les dépendances
 - `npm run build` : Compiler l'application
+- `npm run start` : Démarre l'application en mode production
 
+Ouvrir un navigateur et aller sur l'adresse `http://localhost:1337/admin` pour accéder à l'interface d'administration de Strapi.
+L'identifiant du compte par dfaut est :
+ID : `admin@admin.com`
+Mot de passe : `Root1234`
 
+### Front
+
+Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
+
+- `cd front` : Se placer dans le dossier front
+- `npm install` : Installer les dépendances
+- `npm run build` : Compiler l'application
+- Déployez ensuitee le dossier `public` généré par la commande précédente sur un serveur web (Apache, Nginx etc..)
+
+Pour exécuter l'application en mode développement, exécuter la commande `npm run dev` à la place de `npm run build`.
+
+- Ouvrir un navigateur et aller sur l'adresse `http://localhost:5173` pour accéder au site
 
 # Plugins Strapi utilisés
 
