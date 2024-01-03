@@ -2,12 +2,12 @@ FROM node
 
 WORKDIR /app
 
-COPY ./strapi_01/package.json /app/package.json
-COPY ./strapi_01/package-lock.json /app/package-lock.json
+COPY ./package.json /app/package.json
+COPY ./package-lock.json /app/package-lock.json
 
 RUN npm install
 
-COPY ./strapi_01 /app
+COPY . /app
 
 RUN npm run build
 

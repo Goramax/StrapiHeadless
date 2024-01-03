@@ -2,12 +2,12 @@ FROM node as build-stage
 
 WORKDIR /app
 
-COPY ./front/package.json /app/package.json
-COPY ./front/package-lock.json /app/package-lock.json
+COPY ./package.json /app/package.json
+COPY ./package-lock.json /app/package-lock.json
 
 RUN npm install
 
-COPY ./front /app
+COPY . /app
 
 FROM nginx as production-stage
 
