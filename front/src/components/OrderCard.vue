@@ -13,6 +13,9 @@
       <span class="price">{{ order.attributes.price }} €</span>
     </div>
     <div class="actions">
+      <span class="action edit" @click="openModal(order.id, order.attributes.price)">
+        <Edit />
+      </span>
       <span class="action delete" @click="deleteOrder">
         <Delete />
       </span>
@@ -22,10 +25,12 @@
 
 <script lang="ts">
 import Delete from "@/components/icons/Delete.vue";
+import Edit from "@/components/icons/Edit.vue";
 export default {
   name: "OrderCardComponent",
   components: {
     Delete,
+    Edit,
   },
   props: {
     order: {
@@ -48,6 +53,9 @@ export default {
         .then((data) => {
           this.refreshData();
         });
+    },
+    openModal(id: number, price: number) {
+        this.$emit("openModal", id, price);
     },
     refreshData() {
       this.$emit("refreshData");
