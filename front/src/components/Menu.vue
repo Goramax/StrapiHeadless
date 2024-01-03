@@ -16,7 +16,7 @@
             >Create your own burger !</router-link
           >
         </div>
-        <div class="main-menu-content__item">
+        <!-- <div class="main-menu-content__item">
           <router-link to="/login" class="btn btn--primary" @click="closeMenu"
             >Login</router-link
           >
@@ -27,6 +27,14 @@
             class="btn btn--primary"
             @click="closeMenu"
             >Register</router-link
+          >
+        </div> -->
+        <div class="main-menu-content__item">
+          <router-link
+            to="/admin"
+            class="btn btn--primary"
+            @click="closeMenu"
+            >Admin</router-link
           >
         </div>
       </div>

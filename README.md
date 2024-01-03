@@ -11,10 +11,10 @@
   - [Fonctionnement de l'application](#fonctionnement-de-lapplication)
     - [Diagramme de séquence](#diagramme-de-séquence)
     - [Diagramme de cas d'utilisation](#diagramme-de-cas-dutilisation)
-- [Déploiement avec Docker](#déploiement-avec-docker)
-  - [Prérequis](#prérequis)
-  - [Déploiement avec Make](#déploiement-avec-make)
-  - [Déploiement sans Make](#déploiement-sans-make)
+- [~~Déploiement avec Docker~~](#déploiement-avec-docker)
+  - [~~Prérequis~~](#prérequis)
+  - [~~Déploiement avec Make~~](#déploiement-avec-make)
+  - [~~Déploiement sans Make~~](#déploiement-sans-make)
 - [Déploiement sans Docker](#déploiement-sans-docker)
   - [Prérequis](#prérequis-1)
   - [Déploiement](#déploiement)
@@ -88,29 +88,29 @@ Le front est développé avec **Svelte**, un framework javascript.
 
 ![Diagramme de cas d'utilisation](./doc_resources/Diagramme_Cas_Utilisation.drawio.png)
 
-# Déploiement avec Docker
+# ~~Déploiement avec Docker~~
 
-## Prérequis
+## ~~Prérequis~~
 
-- Docker
-- Docker-compose (intégré à Docker sur Windows et Mac)
-- Make (optionnel)
+- ~~Docker~~
+- ~~Docker-compose (intégré à Docker sur Windows et Mac)~~
+- ~~Make (optionnel)~~
 
-## Déploiement avec Make
-Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
+## ~~Déploiement avec Make~~
+~~Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :~~
 
-- `make up` : Déploie l'application et la démarre
-- `make stop` : Arrête l'application
-- `make start` : Démarre l'application
-- `make remove` : Désinstalle et Supprime les données de l'application
+- ~~`make up` : Déploie l'application et la démarre~~
+- ~~`make stop` : Arrête l'application~~
+- ~~`make start` : Démarre l'application~~
+- ~~`make remove` : Désinstalle et Supprime les données de l'application~~
 
-## Déploiement sans Make
-Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :
+## ~~Déploiement sans Make~~
+~~Ouvrir un terminal à la racine de l'application et exécuter les commandes suivantes :~~
 
-- `docker compose up -d` : Déploie l'application
-- `docker compose stop` : Arrête l'application
-- `docker compose start` : Démarre l'application
-- `docker compose down -v --rmi local` : Supprime les données de l'application
+- ~~`docker compose up -d` : Déploie l'application~~
+- ~~`docker compose stop` : Arrête l'application~~
+- ~~`docker compose start` : Démarre l'application~~
+- ~~`docker compose down -v --rmi local` : Supprime les données de l'application~~
 
 # Déploiement sans Docker
 

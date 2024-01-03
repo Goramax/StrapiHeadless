@@ -1,11 +1,9 @@
 <template>
   <main>
     <h1>Order [{{ orderRef }}] confirmed</h1>
-    <div class="content-container">
       <div class="cta">
         <router-link to="/" class="btn btn--primary">Back to home</router-link>
       </div>
-    </div>
   </main>
 </template>
 
