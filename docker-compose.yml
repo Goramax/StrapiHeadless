@@ -17,3 +17,11 @@ services:
       - 80:80
     depends_on:
       - strapi
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bvo.rule=Host(`bvo.maxime-malherbe.fr`)"
+      - "traefik.http.routers.bvo.entrypoints=websecure"
+      - "traefik.http.routers.bvo.tls=true"
+      - "traefik.http.routers.bvo.tls.certresolver=myresolver"
+    networks:
+      - traefiknet
