@@ -25,3 +25,7 @@ services:
       - "traefik.http.routers.bvo.tls.certresolver=myresolver"
     networks:
       - traefiknet
+      
+networks:
+  traefiknet:
+    external: true
